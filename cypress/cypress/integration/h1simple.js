@@ -9,4 +9,12 @@ describe('simple axe cat page tests', () => {
         cy.title().should('contain', 'laundry')
         cy.checkA11y();
     });
+
+    
+it('Has no detectable a11y violations on load (filtering to only include critical impact violations)', () => {
+    // Test on initial load, only report and assert for critical impact items
+    cy.checkA11y(null, {
+      includedImpacts: ['critical']
+    })
+  })
 });
